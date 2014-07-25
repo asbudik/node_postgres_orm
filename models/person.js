@@ -6,31 +6,48 @@ function Person(params) {
   this.id = params.id;
 };
 
-
 Person.all = function(callback){
-  db.query("YOUR QUERY HERE",[], function(err, res){
+  db.query('SELECT * FROM people', [], function(err, res){
     var allPeople = [];
     // do something here with res
+    res.rows.forEach(function(params) {
+      allPeople.push(new Person(params));
+    })
     callback(err, allPeople);
   });
-}
+};
+
+Person.all(function(err, allPeopleArray) {
+  console.log(allPeopleArray);
+});
+
 
 Person.findBy = function(key, val, callback) {
-  db.query("",[val], function(err, res){
-    var foundRow, foundPerson;
-    // do something here with res
+  db.query('SELECT * FROM people WHERE ' + key + '=$1', [val], function(err, res){
+    
+    var foundRow = res.rows[0];
+    var foundPerson = new Person(foundRow);
+
     callback(err, foundPerson);
   });
 };
 
+Person.findBy('firstname', 'Jill', function(err, returnPerson) {
+  console.log(returnPerson);
+})
 
 
 Person.create = function(params, callback){
-  db.query("", [params.firstname, params.lastname], function(err, res){
-    var createdRow, newPerson;
+  db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2) RETURNING *', [params.firstname, params.lastname], function(err, res){
+    var createdRow = res.rows[0];
+    var newPerson = new Person(createdRow);
     callback(err, newPerson);
   });
 };
+
+Person.create({firstname: 'Salem', lastname: 'Sint'}, function(err, createdPerson) {
+  console.log(createdPerson);
+});
 
 Person.prototype.update = function(params, callback) {
   var colNames = [];
@@ -65,9 +82,10 @@ Person.prototype.update = function(params, callback) {
 }
 
 Person.prototype.destroy = function(){
-  db.query("", [this.id], function(err, res) {
+  db.query("DELETE FROM people WHERE id=$1", [this.id], function(err, res) {
     callback(err)
   });
 }
+
 
 module.exports = Person;

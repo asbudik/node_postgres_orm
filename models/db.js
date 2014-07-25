@@ -14,11 +14,9 @@ db.connect = function(callback) {
 
 db.query = function(statement, params, callback) {
   this.connect(function(err, client, done){
-      client.query(statement, params, callback);
+    client.query(statement, params, callback);
     done();
   })
 }
 
 module.exports = db;
-
-

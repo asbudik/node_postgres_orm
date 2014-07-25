@@ -4,9 +4,9 @@ var Models = {};
 
 Models.Person = Person;
 
-Models.Person.all(function(err, people){
-  console.log(people);
-});
+// Models.Person.all(function(err, people){
+//   console.log(people);
+// });
 
 // Models.Person.findBy("id", 1, function(err, person){
 //   console.log("found", person);
