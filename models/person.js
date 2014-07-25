@@ -83,9 +83,14 @@ Person.prototype.update = function(params, callback) {
 
 Person.prototype.destroy = function(){
   db.query("DELETE FROM people WHERE id=$1", [this.id], function(err, res) {
-    callback(err)
+    if (err) {
+      console.error("Something went wrong");
+    }
   });
 }
 
+Person.findBy('id', 14, function(err, returnPerson) {
+  returnPerson.destroy();
+})
 
 module.exports = Person;
