@@ -45,9 +45,9 @@ Person.create = function(params, callback){
   });
 };
 
-Person.create({firstname: 'Salem', lastname: 'Sint'}, function(err, createdPerson) {
-  console.log(createdPerson);
-});
+// Person.create({firstname: 'Salem', lastname: 'Sint'}, function(err, createdPerson) {
+//   console.log(createdPerson);
+// });
 
 Person.prototype.update = function(params, callback) {
   var colNames = [];
@@ -89,8 +89,8 @@ Person.prototype.destroy = function(){
   });
 }
 
-Person.findBy('id', 14, function(err, returnPerson) {
-  returnPerson.destroy();
-})
+// Person.findBy('id', 14, function(err, returnPerson) {
+//   returnPerson.destroy();
+// })
 
 module.exports = Person;
