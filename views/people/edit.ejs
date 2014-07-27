@@ -1,10 +1,10 @@
 <%- include ../__header.ejs %>
 
 <form method="post" action="/people/<%= person.id %>?_method=put">
-  <input type="text" name="person[firstname]" value="<%= person.firstname %>"><br>
-  <input type="text" name="person[lastname]" value="<%= person.lastname %>"><br>
+  <input type="text" name="person[firstname]" value="<%= person.firstname %>">
+  <input type="text" name="person[lastname]" value="<%= person.lastname %>">
   <input type="hidden" name="person[id]">
-  <button>SAVE</button>
+  <button>Save Friend Details</button>
 </form>
 
 <%- include ../__footer.ejs %>

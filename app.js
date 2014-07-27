@@ -30,14 +30,20 @@ app.get("/people/new", function(req, res){
   res.render("people/new")
 });
 
+
 app.get("/people/:id", function(req,res){
 
   var index = req.query.id;
-
   Person.findBy('id', index, function(err, foundPerson) {
+    console.log(foundPerson)
+    if (foundPerson !== undefined) {
     res.render("people/show", {person: foundPerson});
+    } else {
+      res.redirect("/");
+    }
   })
 });
+
 
 app.get("/people/:id/edit", function(req,res){
   Person.findBy('id', req.params.id, function(err, foundPerson) {

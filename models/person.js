@@ -36,9 +36,10 @@ Person.findBy = function(key, val, callback) {
     if (err) {
       console.log("something went wrong", err);
     }
-    var foundRow = res.rows[0];
-    var foundPerson = new Person(foundRow);
-
+    if (res.rows.length > 0) {
+      var foundRow = res.rows[0];
+      var foundPerson = new Person(foundRow);
+    }
     callback(err, foundPerson);
   });
 };
