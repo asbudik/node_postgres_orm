@@ -1,6 +1,27 @@
 <%- include ../__header.ejs %>
-
 <h2 class="blog-post-title">Home Stuff</h2>
+
+
+<% function getRandomInt(min, max) { %>
+  <% return Math.floor(Math.random() * (max - min)) + min; %>
+<% } %>
+
+<% everyone.forEach(function(person) { %>
+  <div class="blog-post">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <% person = everyone[getRandomInt(0, everyone.length - 1)]; %>
+        <%= person.firstname %> <%= person.lastname %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <p>Portland keffiyeh photo booth Brooklyn, normcore Pinterest chia Banksy narwhal Odd Future kitsch 90's. Normcore messenger bag American Apparel Echo Park yr Shoreditch. Flexitarian lomo Tonx banjo viral, messenger bag butcher photo booth. YOLO church-key mustache, PBRB post-ironic fap disrupt iPhone Cosby sweater stumptown cliche flannel shabby chic hella. Cliche bicycle rights paleo fanny pack farm-to-table Portland, sustainable post-ironic keytar brunch chillwave. Pug disrupt cliche, butcher leggings fashion axe 3 wolf moon. Quinoa gastropub ugh, pop-up Vice tousled pickled yr trust fund craft beer Thundercats Portland pork belly +1.</p>
+    </div>
+  </div>
+</div>
+<% }) %>
+
 
 
 <%- include ../__footer.ejs %>

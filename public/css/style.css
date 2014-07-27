@@ -1,6 +1,13 @@
+
+
 h1 {
 	color: #484848;
 	font-size: 50px;
+}
+
+.blog-post-title {
+	color: #505050;
+	margin-bottom: 30px;
 }
 
 .lead {
@@ -9,4 +16,20 @@ h1 {
 
 .pichead {
 	background-image: url('../friends.jpg');
+}
+
+.blog-post {
+	width: 650px;
+}
+
+.panel-title {
+	color: #505050;
+}
+
+.delete {
+	float: right;
+}
+
+.table {
+	width: 350px;
 }

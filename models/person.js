@@ -1,20 +1,21 @@
 var db = require('./db');
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function Person(params) {
   this.firstname = params.firstname;
   this.lastname = params.lastname;
+  this.phonenumber = "(" + getRandomInt(100, 999) + ") " + getRandomInt(100, 999) + " - " + getRandomInt(1000, 9999)
   this.id = params.id;
 };
 
-var error = function(errMessage) {
-  if (errMessage) {
-    console.log("something went wrong", err);
-  }
-}
-
 Person.all = function(callback){
   db.query('SELECT * FROM people', [], function(err, res){
-    error(err);
+    if (err) {
+      console.log("something went wrong", err);
+    }
     var allPeople = [];
     // do something here with res
     res.rows.forEach(function(params) {
@@ -32,7 +33,9 @@ Person.all = function(callback){
 
 Person.findBy = function(key, val, callback) {
   db.query('SELECT * FROM people WHERE ' + key + '=$1', [val], function(err, res){
-    error(err);
+    if (err) {
+      console.log("something went wrong", err);
+    }
     var foundRow = res.rows[0];
     var foundPerson = new Person(foundRow);
 
@@ -47,7 +50,9 @@ Person.findBy = function(key, val, callback) {
 
 Person.create = function(params, callback){
   db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2) RETURNING *', [params.firstname, params.lastname], function(err, res){
-    error(err);
+    if (err) {
+      console.log("something went wrong", err);
+    }
     var createdRow = res.rows[0];
     var newPerson = new Person(createdRow);
     callback(err, newPerson);
@@ -92,7 +97,9 @@ Person.prototype.update = function(params, callback) {
 
 Person.prototype.destroy = function(){
   db.query("DELETE FROM people WHERE id=$1", [this.id], function(err, res) {
-    error(err);
+    if (err) {
+      console.log("something went wrong", err);
+    }
   });
 }
 

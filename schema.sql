@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS people (
   id serial primary key,
   firstname varchar(25),
   lastname varchar(25),
+  phonenumber varchar(20),
   created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 

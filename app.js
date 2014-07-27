@@ -15,7 +15,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", function(req, res) {
-    res.render('people/index')
+  Person.all(function(err, allPeople) {
+    res.render('people/index', {everyone: allPeople})
+  })
 })
 
 app.get("/people", function(req, res) {
@@ -26,33 +28,25 @@ app.get("/people", function(req, res) {
 
 app.get("/people/new", function(req, res){
   res.render("people/new")
-  console.log("we here")
 });
 
-
-
-
-
 app.get("/people/:id", function(req,res){
-  var index = Number(req.params.id);
+
+  var index = req.query.id;
+
   Person.findBy('id', index, function(err, foundPerson) {
-    res.render("people/show", {foundPerson: foundPerson});
+    res.render("people/show", {person: foundPerson});
   })
 });
 
 app.get("/people/:id/edit", function(req,res){
-  res.render("people/edit", {person: {} });
+  Person.findBy('id', req.params.id, function(err, foundPerson) {
+    res.render("people/edit", {person: foundPerson});
+  })
 });
 
-
-
-
-
-
 app.post("/people", function(req, res){
-  console.log("now we here")
-  console.log(req.body);
-  person = req.body.person;
+  var person = req.body.person;
   Person.create(person, function(err, createdPerson) {
     res.redirect("/people")
   });
@@ -66,11 +60,14 @@ app.delete("/people/:id", function(req, res){
   res.redirect("/people");
 });
 
-
-
-
-
 app.put("/people/:id", function(req,res){
+  var id = req.params.id
+  var person = req.body.person;
+  person.id = Number(id);
+  Person.findBy('id', id, function(err, returnPerson) {
+    returnPerson.update(person, function(err, person) {
+    })
+  })
   res.redirect("/people");
 })
 

@@ -1,8 +1,10 @@
-<!doctype html>
-<html>
-  <head>
-  </head>
-  <body>
+<%- include ../__header.ejs %>
 
-  </body>
-</html>
+<form method="post" action="/people/<%= person.id %>?_method=put">
+  <input type="text" name="person[firstname]" value="<%= person.firstname %>"><br>
+  <input type="text" name="person[lastname]" value="<%= person.lastname %>"><br>
+  <input type="hidden" name="person[id]">
+  <button>SAVE</button>
+</form>
+
+<%- include ../__footer.ejs %>

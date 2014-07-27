@@ -2,7 +2,9 @@
 
 <h2 class="blog-post-title">Your special friend!</h2>
 
-<%= foundPerson.firstname %>
-<%= foundPerson.id %>
+<%= person.id %> <%= person.firstname %> <%= person.lastname %> <%= person.phonenumber %>
+
+<a href="/people/<%= person.id %>/edit"><button>Edit</button></a>
+
 
 <%- include ../__footer.ejs %>

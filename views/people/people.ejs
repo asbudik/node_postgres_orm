@@ -2,18 +2,24 @@
 
 <h2 class="blog-post-title">Your friends</h2>
 
-<form action="/people">
+<form action="/people/show">
   <input type="text" name="id" placeholder="Search by id"></input>
   <input type="submit"></input>
 </form>
 
-<ul>
-<% everyone.forEach(function(person) { %>
-  <li><%= person.id %>
-  <%= person.firstname %>
+<table class="table table-hover">
+  <ul>
+    <% everyone.forEach(function(person) { %>
+      <tr>
+        <td>
+	        <li><a href="people/<%= person.id %>"><%= person.id %>
+	        <%= person.firstname %> <%= person.lastname %></a>
 
-  <form method="post" action="/people/<%= person.id %>?_method=delete"><button>Delete</button></form></li>
-<% }) %>
-</ul>
+	        <form class="delete" method="post" action="/people/<%= person.id %>?_method=delete"><button>Delete</button></form></li>
+        </td>
+      </tr>
+    <% }) %>
+  </ul>
+</table>
 
 <%- include ../__footer.ejs %>
