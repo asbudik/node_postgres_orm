@@ -1,0 +1,19 @@
+<%- include ../__header.ejs %>
+
+<h2 class="blog-post-title">Your friends</h2>
+
+<form action="/people">
+  <input type="text" name="id" placeholder="Search by id"></input>
+  <input type="submit"></input>
+</form>
+
+<ul>
+<% everyone.forEach(function(person) { %>
+  <li><%= person.id %>
+  <%= person.firstname %>
+
+  <form method="post" action="/people/<%= person.id %>?_method=delete"><button>Delete</button></form></li>
+<% }) %>
+</ul>
+
+<%- include ../__footer.ejs %>

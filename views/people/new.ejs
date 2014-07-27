@@ -1,7 +1,10 @@
-<!doctype html>
-<html>
-  <head>
-  </head>
-  <body>
-  </body>
-</html>
+<%- include ../__header.ejs %>
+
+<h2 class="blog-post-title">Add a new friend</h2>
+
+<form method="post" action="/people">
+	<input type="text" name="person[firstname]" placeholder="First Name"></input>
+	<input type="text" name="person[lastname]" placeholder="Last Name"></input>
+	<input type="submit"></input>
+
+<%- include ../__footer.ejs %>
