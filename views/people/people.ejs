@@ -12,7 +12,7 @@
     <% everyone.forEach(function(person) { %>
       <tr>
         <td>
-	        <li><a href="/people/show/?id=<%= person.id %>"><%= person.id %>
+	        <li><a class="allpeople" href="/people/show/?id=<%= person.id %>"><%= person.id %>
 	        <%= person.firstname %> <%= person.lastname %></a>
 
 	        <form class="delete" method="post" action="/people/<%= person.id %>?_method=delete"><button>Delete</button></form></li>

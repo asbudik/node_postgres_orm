@@ -46,3 +46,11 @@ h1 {
 .showpagebuttons:hover {
   color: grey;
 }
+
+.allpeople {
+	color:brown;
+}
+
+.allpeople:hover {
+	color: orange;
+}
