@@ -53,4 +53,5 @@ h1 {
 
 .allpeople:hover {
 	color: orange;
+	text-decoration: none;
 }
