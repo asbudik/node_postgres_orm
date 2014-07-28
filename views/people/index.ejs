@@ -12,7 +12,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         <% person = everyone[getRandomInt(0, everyone.length)]; %>
-        <%= person.firstname %> <%= person.lastname %>
+        <a class="allpeople" href="/people/show/?id=<%= person.id %>"><%= person.firstname %> <%= person.lastname %></a>
       </h3>
     </div>
     <div class="panel-body">

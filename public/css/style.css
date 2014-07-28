@@ -23,7 +23,7 @@ h1 {
 }
 
 .panel-title {
-	color: #505050;
+	color: #614126;
 }
 
 .delete {
@@ -52,6 +52,6 @@ h1 {
 }
 
 .allpeople:hover {
-	color: orange;
+	color: #f4a460;
 	text-decoration: none;
 }
