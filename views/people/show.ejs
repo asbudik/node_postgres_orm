@@ -4,10 +4,10 @@
 
 <h4><%= person.firstname %> <%= person.lastname %></h4>
 
-<p> <%= person.phonenumber %></p>
+<p class="phonenumber"> <%= person.phonenumber %></p>
 
-<a href="/people/<%= person.id %>/edit"><button>Edit Details</button></a>
-<a href="/people"><button>Go back</button></a>
+<a class="showpagebuttons" href="/people/<%= person.id %>/edit"><button>Edit Details</button></a>
+<a class="showpagebuttons" href="/people"><button>Go back</button></a>
 
 
 <%- include ../__footer.ejs %>

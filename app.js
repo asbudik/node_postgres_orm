@@ -35,11 +35,10 @@ app.get("/people/:id", function(req,res){
 
   var index = req.query.id;
   Person.findBy('id', index, function(err, foundPerson) {
-    console.log(foundPerson)
-    if (foundPerson !== undefined) {
-    res.render("people/show", {person: foundPerson});
+    if (foundPerson === undefined) {
+      res.redirect("/people");
     } else {
-      res.redirect("/");
+      res.render("people/show", {person: foundPerson});
     }
   })
 });
